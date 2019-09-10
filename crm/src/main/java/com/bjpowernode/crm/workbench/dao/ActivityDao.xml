@@ -54,7 +54,7 @@
                         </if>
                 </where>
                 order by a.createTime desc
-                limit ${skipCount},${pageSize}
+                limit #{skipCount},#{pageSize}
         </select>
         <select id="getTotalByCondition" resultType="int">
                 select count(*) from
@@ -96,6 +96,63 @@
                 editBy=#{editBy}
                 where id=#{id}
         </update>
+        <select id="detail" resultType="Activity">
+                select
+                a.id,
+                u.name as owner,
+                a.name,
+                a.startDate,
+                a.endDate,
+                a.cost,
+                a.description,
+                a.createTime,
+                a.createBy,
+                a.editTime,
+                a.editBy
+                from tbl_activity a join tbl_user u
+                on a.owner = u.id
+                where a.id=#{id}
+        </select>
+        <select id="getActivityListByClueId" resultType="Activity">
+                select
+                car.id as id,
+                a.name,
+                a.startDate,
+                a.endDate,
+                u.name as owner
+                from tbl_user u
+                join tbl_activity a
+                on u.id = a.owner
+                join tbl_clue_activity_relation car
+                on a.id = car.activityId
+                where car.clueId = #{clueId}
+        </select>
+        <select id="getActivityListByNameAndNotByClueId" resultType="Activity">
+                select
+                a.id,
+                a.name,
+                u.name as owner,
+                a.startDate,
+                a.endDate
+                from tbl_activity a
+                join tbl_user u
+                on  a.owner = u.id
+                where a.name like '%' #{aname} '%'
+                and  a.id not in (select activityId from tbl_clue_activity_relation where clueId = #{clueId})
+
+        </select>
+        <select id="getActivityListByName" resultType="Activity">
+                select
+                a.id,
+                a.name,
+                u.name as owner,
+                a.startDate,
+                a.endDate
+                from tbl_activity a
+                join tbl_user u
+                on a.owner = u.id
+                where a.name like '%' #{name} '%'
+        </select>
 	
 </mapper>
 

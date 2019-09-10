@@ -10,7 +10,7 @@ import java.util.Date;
  * 2019/8/30
  */
 public class Test {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
        LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String time=dateTime.format(dtf);
@@ -23,5 +23,5 @@ public class Test {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String time = sdf.format(date);
         System.out.println(time);
-    }
+    }*/
 }

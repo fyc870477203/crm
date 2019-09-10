@@ -4,7 +4,7 @@ package com.bjpowernode.crm.workbench.domain;
  * 作者:fyc
  * 2019/8/30
  */
-public class ActivityRemarke {;
+public class ActivityRemark {;
  private String id;
  private String noteContent;
  private String createTime;

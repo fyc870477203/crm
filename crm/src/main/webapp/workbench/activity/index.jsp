@@ -97,7 +97,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						//dom转换为jquery
 						//$(dom)
 						//我们以取得表单，清空表单的形式去做
-						//$("#activitySaveForm")[0].reset();
+						$("#activitySaveForm")[0].reset();
 						pageList(1,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
 						//关闭模态窗口
 						$("#createActivityModal").modal("hide");
@@ -266,7 +266,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				$.each(data.dataList,function (i, n) {
 					html += '<tr class="active">';
 					html += '<td><input type="checkbox"  name="xz" value="'+n.id+'"/></td>';
-					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'workbench/activity/detail.jsp\';">'+n.name+'</a></td>';
+					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'workbench/activity/detail.do?id='+n.id+'\';">'+n.name+'</a></td>';
 					html += '<td>'+n.owner+'</td>';
 					html += '<td>'+n.startDate+'</td>';
 					html += '<td>'+n.endDate+'</td>';
